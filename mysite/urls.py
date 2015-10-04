@@ -19,7 +19,9 @@ from mysite.views import hello, current_datetime, hours_ahead, display_meta
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^blog/', include('blog.urls')),
     url(r'^books/', include('books.urls')),
+    url(r'^flowers/', include('flowers.urls', namespace="flowers")),
     url(r'^hello/$', hello),
     url(r'^meta$', display_meta),
     url(r'^time/$', current_datetime),

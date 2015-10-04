@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="jumbotron">
+      <h1>The Little Prince</h1>
+      <p>
+        This is some simple introduction of flower shop with the name of The
+        Little Prince. 
+      </p>
+      <p>
+        <a class="btn btn-primary btn-lg" href="#">Learn more</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      {% for flower in flowers %}
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="{{ MEDIA_URL }} {{ flower.pic }}" alt="{{ flower.name }}">
+            <div class="caption">
+              <h3>{{ flower.name }}</h3>
+              <p>{{ flower.description }}</p>
+              <p><a class="btn btnprimary" href="#">buy</a></p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if flowers.has_previous %}
+        <a href="?page={{flowers.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ flowers.number }} of {{ flowers.paginator.num_pages }}.
+        </span>
+
+        {% if flowers.has_next %}
+        <a href="?page={{flowers.next_page_number }}">next</a>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+  {% endblock %}
