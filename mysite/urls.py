@@ -19,11 +19,7 @@ from mysite.views import hello, current_datetime, hours_ahead, display_meta
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^blog/', include('blog.urls')),
-    url(r'^books/', include('books.urls')),
-    url(r'^flowers/', include('flowers.urls', namespace="flowers")),
-    url(r'^hello/$', hello),
-    url(r'^meta$', display_meta),
-    url(r'^time/$', current_datetime),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^blog/', include('apps.blog.urls')),
+    url(r'^books/', include('apps.books.urls')),
+    url(r'^flowers/', include('apps.flowers.urls', namespace="flowers")),
 ]
